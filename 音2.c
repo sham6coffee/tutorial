@@ -1,3 +1,4 @@
+//ã¶ã£ã¡ã‚ƒã‘ã‚ˆãã‚ã‹ã£ã¦ãªã„
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -10,47 +11,47 @@
 int main(void) {
 	FILE *fp;
 
-	/***•¶š—ñ"RIFF"‚ÌéŒ¾Eİ’è***/
+	/***æ–‡å­—åˆ—"RIFF"ã®å®£è¨€ãƒ»è¨­å®š***/
 	const char *s_riff = "RIFF";
 
-	/***•¶š—ñ"WAVE"‚ÌéŒ¾Eİ’è***/
+	/***æ–‡å­—åˆ—"WAVE"ã®å®£è¨€ãƒ»è¨­å®š***/
 	const char *s_wave = "WAVE";
-	/***ƒtƒ@ƒCƒ‹ƒTƒCƒYWholeSize‚ÌéŒ¾***/
+	/***ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚ºWholeSizeã®å®£è¨€***/
 	int WholeSize;
 
-	/***•¶š—ñ"fmt "‚ÌéŒ¾Eİ’è***/
+	/***æ–‡å­—åˆ—"fmt "ã®å®£è¨€ãƒ»è¨­å®š***/
 	const char *s_fmt = "fmt ";
-	/***fmtƒ`ƒƒƒ“ƒNƒTƒCƒY‚ÌéŒ¾***/
+	/***fmtãƒãƒ£ãƒ³ã‚¯ã‚µã‚¤ã‚ºã®å®£è¨€***/
 	int FmtChunkSize;
-	/***«ƒtƒH[ƒ}ƒbƒgID:FmtID‚ğéŒ¾Eİ’è***/
+	/***â†“ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆID:FmtIDã‚’å®£è¨€ãƒ»è¨­å®š***/
 	short FmtId = 1;
-	/***«ƒ`ƒƒƒlƒ‹”Channel‚ğéŒ¾Eİ’è***/
+	/***â†“ãƒãƒ£ãƒãƒ«æ•°Channelã‚’å®£è¨€ãƒ»è¨­å®š***/
 	short Channel = 1;
-	/***«ƒTƒ“ƒvƒŠƒ“ƒOƒŒ[ƒgSamplingRate‚ğéŒ¾Eİ’è***/
+	/***â†“ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ãƒ¬ãƒ¼ãƒˆSamplingRateã‚’å®£è¨€ãƒ»è¨­å®š***/
 	int SamplingRate = 8000;
-	/***«ƒf[ƒ^‘¬“xDataVelocity‚ğéŒ¾***/
+	/***â†“ãƒ‡ãƒ¼ã‚¿é€Ÿåº¦DataVelocityã‚’å®£è¨€***/
 	int DataVelocity;
-	/***«ƒuƒƒbƒNƒTƒCƒYBlockSize‚ğéŒ¾Eİ’è***/
+	/***â†“ãƒ–ãƒ­ãƒƒã‚¯ã‚µã‚¤ã‚ºBlockSizeã‚’å®£è¨€ãƒ»è¨­å®š***/
 	short BlockSize;
-	/***«ƒTƒ“ƒvƒ‹’PˆÊƒrƒbƒg”‚ğİ’è***/
+	/***â†“ã‚µãƒ³ãƒ—ãƒ«å˜ä½ãƒ“ãƒƒãƒˆæ•°ã‚’è¨­å®š***/
 	short Bps = 16;
 
-	/***•¶š—ñ"data"‚Ìİ’è***/
+	/***æ–‡å­—åˆ—"data"ã®è¨­å®š***/
 	const char *s_data = "data";
-	/***«dataƒ`ƒƒƒ“ƒNƒTƒCƒY‚ğéŒ¾***/
+	/***â†“dataãƒãƒ£ãƒ³ã‚¯ã‚µã‚¤ã‚ºã‚’å®£è¨€***/
 	int DataChunkSize;
-	/***«”gŒ`ƒf[ƒ^”z—ñWaveData‚ğéŒ¾***/
+	/***â†“æ³¢å½¢ãƒ‡ãƒ¼ã‚¿é…åˆ—WaveDataã‚’å®£è¨€***/
 	short WaveData[WAVEDATASIZE];
 
 	int i, chk;
 
-	/***«ƒf[ƒ^‘¬“xDataVelocity‚ğİ’è***/
+	/***â†“ãƒ‡ãƒ¼ã‚¿é€Ÿåº¦DataVelocityã‚’è¨­å®š***/
 	DataVelocity = SamplingRate*Bps / 8 * Channel;
 
-	/***«ƒuƒƒbƒNƒTƒCƒYBlockSize‚ğİ’è***/
+	/***â†“ãƒ–ãƒ­ãƒƒã‚¯ã‚µã‚¤ã‚ºBlockSizeã‚’è¨­å®š***/
 	BlockSize = Bps / 8 * Channel;
 
-	/***«fmtƒ`ƒƒƒ“ƒNƒTƒCƒYFmtchunkSize‚ğİ’è***/
+	/***â†“fmtãƒãƒ£ãƒ³ã‚¯ã‚µã‚¤ã‚ºFmtchunkSizeã‚’è¨­å®š***/
 	FmtChunkSize =
 		sizeof(FmtId)
 		+ sizeof(Channel)
@@ -59,10 +60,10 @@ int main(void) {
 		+ sizeof(BlockSize)
 		+ sizeof(Bps);
 
-	/***«dataƒ`ƒƒƒ“ƒNƒTƒCƒYDataChunkSize‚ğİ’è***/
+	/***â†“dataãƒãƒ£ãƒ³ã‚¯ã‚µã‚¤ã‚ºDataChunkSizeã‚’è¨­å®š***/
 	DataChunkSize = WAVEDATASIZE*BlockSize;
 
-	/***«ƒtƒ@ƒCƒ‹ƒTƒCƒYWholeSize‚ğİ’è***/
+	/***â†“ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚ºWholeSizeã‚’è¨­å®š***/
 	WholeSize = strlen(s_wave)
 		+ strlen(s_fmt)
 		+ sizeof(FmtChunkSize)
@@ -71,7 +72,7 @@ int main(void) {
 		+ sizeof(DataChunkSize)
 		+ DataChunkSize;
 
-	/***”gŒ`ƒf[ƒ^WaveData‚Ìİ’è***/
+	/***æ³¢å½¢ãƒ‡ãƒ¼ã‚¿WaveDataã®è¨­å®š***/
 	for (i = 0;i<WAVEDATASIZE;i++) {
 		WaveData[i] = (short)(SHRT_MAX*sin(2 * M_PI*1000.0*((double)i) / (double)(SamplingRate)));
 	}
@@ -82,65 +83,65 @@ int main(void) {
 		exit(1);
 	}
 
-	/***«"RIFF"‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***â†“"RIFF"ã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 	chk = fwrite(s_riff, sizeof(s_riff[0]), strlen(s_riff), fp);
 	if (chk<strlen(s_riff)) {
 		printf("Write Error for s_riff\n");
 		exit(1);
 	}
 
-	/***«WholeSize‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***â†“WholeSizeã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 	chk = fwrite(&WholeSize, sizeof(WholeSize), 1, fp);
 	if (chk<1) {
 		printf("Write Error for WholeSize\n");
 		exit(1);
 	}
 
-	/***«"WAVE"‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***â†“"WAVE"ã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 	chk = fwrite(s_wave, sizeof(s_wave[0]), strlen(s_wave), fp);
 	if (chk<strlen(s_wave)) {
 		printf("Write Error for s_wave\n");
 		exit(1);
 	}
 
-	/***‚±‚±‚©‚çfmtƒ`ƒƒƒ“ƒN‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***ã“ã“ã‹ã‚‰fmtãƒãƒ£ãƒ³ã‚¯ã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 
-	/***«"fmt "‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***â†“"fmt "ã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 	chk = fwrite(s_fmt, sizeof(s_fmt[0]), strlen(s_fmt), fp);
 	if (chk<strlen(s_fmt)) {
 		printf("Write Error for s_fmt\n");
 		exit(1);
 	}
 
-	/***«fmtƒ`ƒƒƒ“ƒNƒTƒCƒYFmtChunkSize‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***â†“fmtãƒãƒ£ãƒ³ã‚¯ã‚µã‚¤ã‚ºFmtChunkSizeã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 	chk = fwrite(&FmtChunkSize, sizeof(FmtChunkSize), 1, fp);
 	if (chk<1) {
 		printf("Write Error for FmtChunkSize\n");
 		exit(1);
 	}
 
-	/***«ƒtƒH[ƒ}ƒbƒgID:FmtId‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***â†“ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆID:FmtIdã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 	chk = fwrite(&FmtId, sizeof(FmtId), 1, fp);
 	if (chk<1) {
 		printf("Write Error for FmtId\n");
 		exit(1);
 	}
 
-	/***«ƒ`ƒƒƒlƒ‹”Channel‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***â†“ãƒãƒ£ãƒãƒ«æ•°Channelã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 	chk = fwrite(&Channel, sizeof(Channel), 1, fp);
 	if (chk<1) {
 		printf("Write Error for Channel\n");
 		exit(1);
 	}
 
-	/***«ƒTƒ“ƒvƒŠƒ“ƒOƒŒ[ƒgSamplingRate‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***â†“ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ãƒ¬ãƒ¼ãƒˆSamplingRateã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 	chk = fwrite(&SamplingRate, sizeof(SamplingRate), 1, fp);
 	if (chk<1) {
 		printf("Write Error for SamplingRate\n");
 		exit(1);
 	}
 
-	/***«ƒf[ƒ^‘¬“xDataVelocity‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***â†“ãƒ‡ãƒ¼ã‚¿é€Ÿåº¦DataVelocityã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 	chk = fwrite(&DataVelocity, sizeof(DataVelocity), 1, fp);
 	if (chk<1) {
 		printf("Write Error for DataVelocity\n");
@@ -148,45 +149,45 @@ int main(void) {
 	}
 
 
-	/***«ƒuƒƒbƒNƒTƒCƒYBlockSize‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***â†“ãƒ–ãƒ­ãƒƒã‚¯ã‚µã‚¤ã‚ºBlockSizeã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 	chk = fwrite(&BlockSize, sizeof(BlockSize), 1, fp);
 	if (chk<1) {
 		printf("Write Error for BlockSize\n");
 		exit(1);
 	}
 
-	/***«ƒTƒ“ƒvƒ‹’PˆÊƒrƒbƒg”Bps‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***â†“ã‚µãƒ³ãƒ—ãƒ«å˜ä½ãƒ“ãƒƒãƒˆæ•°Bpsã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 	chk = fwrite(&Bps, sizeof(Bps), 1, fp);
 	if (chk<1) {
 		printf("Write Error for Bps\n");
 		exit(1);
 	}
 
-	/***‚±‚±‚Ü‚Åfmtƒ`ƒƒƒ“ƒN‚Ìƒtƒ@ƒCƒ‹o—Í***/
-	/***‚±‚±‚©‚çdataƒ`ƒƒƒ“ƒN‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***ã“ã“ã¾ã§fmtãƒãƒ£ãƒ³ã‚¯ã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
+	/***ã“ã“ã‹ã‚‰dataãƒãƒ£ãƒ³ã‚¯ã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 
-	/***«"data"‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***â†“"data"ã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 	chk = fwrite(s_data, sizeof(s_data[0]), strlen(s_data), fp);
 	if (chk<strlen(s_data)) {
 		printf("Write Error for s_data\n");
 		exit(1);
 	}
 
-	/***«dataƒ`ƒƒƒ“ƒNƒTƒCƒYDataChunkSize‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***â†“dataãƒãƒ£ãƒ³ã‚¯ã‚µã‚¤ã‚ºDataChunkSizeã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 	chk = fwrite(&DataChunkSize, sizeof(DataChunkSize), 1, fp);
 	if (chk<1) {
 		printf("Write Error for DataChunkSize\n");
 		exit(1);
 	}
 
-	/***«”gŒ`ƒf[ƒ^WaveData‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***â†“æ³¢å½¢ãƒ‡ãƒ¼ã‚¿WaveDataã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 	chk = fwrite(WaveData, sizeof(WaveData[0]), sizeof(WaveData) / sizeof(WaveData[0]), fp);
 	if (chk<sizeof(WaveData) / sizeof(WaveData[0])) {
 		printf("Write Error for WaveData[%d]\n", i);
 		exit(1);
 	}
 
-	/***‚±‚±‚Ü‚Ådataƒ`ƒƒƒ“ƒN‚Ìƒtƒ@ƒCƒ‹o—Í***/
+	/***ã“ã“ã¾ã§dataãƒãƒ£ãƒ³ã‚¯ã®ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›***/
 
 	fclose(fp);
 	return 0;

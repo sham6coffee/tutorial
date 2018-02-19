@@ -37,6 +37,5 @@ int main(void) {
 		printf("sum(include Tax):%.2f\n", (double)(sum*TAX));
 	}
 
-
 	return 0;
 }
